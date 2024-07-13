@@ -1,7 +1,20 @@
-let currentResult = 0;
+const defaultResult = 0;
+let currentResult = defaultResult;
+let text = 'Test';
 
-currentResult += 10;
+function add() {
+    currentResult + userInput.value;
+    outputResult(currentResult, userInput.value);
+}
+function subtract(num1, num2) {
+    return num1 - num2;
+}
+function multiply(num1, num2) {
+    return num1 * num2;
+}
+function divide(num1, num2) {
+    return num1 / num2;
+}
+addBtn.addEventListener('click', add);
 
-let calcDescription = `(${currentResult} + 10)  * 3`;
-
-outputResult(currentResult, calcDescription);
+userInput.value = 0;
