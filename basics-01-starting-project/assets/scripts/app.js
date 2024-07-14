@@ -19,33 +19,37 @@ function addLogEntry(operator, initialResult, num, currentResult) {
     logEntries.push(logEntry);
     console.log(logEntries);
 }
-function add() {
+function executeCalculation(calcType) {
     const inputNum = getUserNumberInput();
     const initialResult = currentResult;
-    currentResult += inputNum;
-    createAndWriteOutput('+', initialResult, inputNum);
-    addLogEntry('ADD', initialResult, inputNum, currentResult);
+    let mathOperator;
+    if(calcType === 'ADD') {
+        currentResult += inputNum;
+        mathOperator = '+';
+    } else if(calcType === 'SUBTRACT') {
+        currentResult -= inputNum;
+        mathOperator = '-';
+    } else if(calcType === 'MULTIPLY') {
+        currentResult *= inputNum;
+        mathOperator = '*';
+    } else if(calcType === 'DIVIDE') {
+        currentResult /= inputNum;
+        mathOperator = '/';
+    }
+    createAndWriteOutput(mathOperator, initialResult, inputNum);
+    addLogEntry(calcType, initialResult, inputNum, currentResult);
+}
+function add() {
+    executeCalculation('ADD');
 }
 function subtract() {
-    const inputNum = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult -= inputNum;
-    createAndWriteOutput('-', initialResult, inputNum);
-    addLogEntry('SUBTRACT', initialResult, inputNum, currentResult);
+    executeCalculation('SUBTRACT');
 }
 function multiply() {
-    const inputNum = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult *= inputNum;
-    createAndWriteOutput('*', initialResult, inputNum);
-    addLogEntry('MULTIPLY', initialResult, inputNum, currentResult);
+    executeCalculation('MULTIPLY');
 }
 function divide() {
-    const inputNum = getUserNumberInput();
-    const initialResult = currentResult;
-    currentResult /= inputNum;
-    createAndWriteOutput('/', initialResult, inputNum);
-    addLogEntry('DIVIDE', initialResult, inputNum, currentResult);
+    executeCalculation('DIVIDE');
 }
 addBtn.addEventListener('click', add);
 subtractBtn.addEventListener('click', subtract);
