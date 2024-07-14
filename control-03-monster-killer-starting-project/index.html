@@ -11,7 +11,6 @@
   </head>
   <body>
     <div id="backdrop"></div>
-    <a href="#" id="alert-message" data-text="" class="info-modal"></a>
     <section id="health-levels">
       <h2>MONSTER HEALTH</h2>
       <progress id="monster-health" max="100" value="100">100%</progress>
@@ -20,8 +19,8 @@
     </section>
     <section id="controls">
       <button id="attack-btn">ATTACK</button>
-      <button id="strong-attack-btn">STRONG ATTACK</button>
-      <button id="heal-btn">HEAL</button>
+      <button id="strong-attack-btn">STRONG ATTACK<span id="strong-attack-amount">0</span></button>
+      <button id="heal-btn">HEAL<span id="heal-potion-amount">0</span></button>
       <button id="log-btn">SHOW LOG</button>
     </section>
   </body>

@@ -85,6 +85,18 @@ button:active {
   margin: 0 0.5rem;
 }
 
+#strong-attack-amount, #heal-potion-amount {
+  font-weight: bold;
+  color: white;
+  background: #181818;
+  border: 1px solid #181818;
+  padding: 0.15rem 0.5rem;
+  border-radius: 10px;
+  text-align: center;
+  margin: 0 0.5rem;
+}
+
+
 .modal {
   position: fixed;
   top: 30vh;

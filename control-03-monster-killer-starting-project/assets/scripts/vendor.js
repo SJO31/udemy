@@ -1,6 +1,8 @@
 const monsterHealthBar = document.getElementById('monster-health');
 const playerHealthBar = document.getElementById('player-health');
 const bonusLifeEl = document.getElementById('bonus-life');
+const strongAttackAmount = document.getElementById('strong-attack-amount');
+const healPotionAmount = document.getElementById('heal-potion-amount');
 
 const attackBtn = document.getElementById('attack-btn');
 const strongAttackBtn = document.getElementById('strong-attack-btn');
@@ -40,6 +42,18 @@ function setPlayerHealth(health) {
 }
 
 // Custom functions
+function removeStrongAttackAmount() {
+  strongAttackAmount.parentNode.removeChild(strongAttackAmount);
+}
+function removeHealingPotions() {
+  healPotionAmount.parentNode.removeChild(healPotionAmount);
+}
+function setStrongAttackAmount(amount) {
+  strongAttackAmount.textContent = amount;
+}
+function setHealingPotionAmount(amount) {
+  healPotionAmount.textContent = amount;
+}
 function toggleBackdrop() {
   backdropElement.classList.toggle('visible');
 }
