@@ -3,8 +3,8 @@ const PLAYER_ATTACK_VALUE = 10;
 const PLAYER_STRONG_ATTACK_VALUE = 17;
 const MONSTER_ATTACK_VALUE = 14;
 const HEAL_VALUE = 20;
-const STRONG_ATTACK_AMOUNT = 10;
-const HEALING_POTIONS = 5;
+const STRONG_ATTACK_AMOUNT = 2;
+const HEALING_POTION_AMOUNT = 5;
 
 const MODE = ['ATTACK', 'STRONG_ATTACK']
 const LOG_EVENT_PLAYER_ATTACK = 'PLAYER_ATTACK';
@@ -24,11 +24,15 @@ if (isNaN(chosenMaxLife) || chosenMaxLife <= 0) {
 }
 let currentMonsterHealth = chosenMaxLife;
 let currentPlayerHealth = chosenMaxLife;
+let currentStrongAttackAmount = STRONG_ATTACK_AMOUNT;
+let currentHealingPotionAmount = HEALING_POTION_AMOUNT;
 let hasBonusLife = true;
+let hasStrongAttacks = true;
+let hasHealingPotions = true;
 
 adjustHealthBars(chosenMaxLife);
 setStrongAttackAmount(STRONG_ATTACK_AMOUNT);
-setHealingPotionAmount(HEALING_POTIONS);
+setHealingPotionAmount(HEALING_POTION_AMOUNT);
 
 // Game functions
 function createLogEntry(ev, val, monsterHealth, playerHealth) {
@@ -129,20 +133,42 @@ function attackHandler() {
     attackMonster(MODE[0]);
 }
 function strongAttackHandler() {
-    attackMonster(MODE[1]);
+    if (hasStrongAttacks) {
+        if (currentStrongAttackAmount > 1) {
+            --currentStrongAttackAmount;
+            setStrongAttackAmount(currentStrongAttackAmount);
+            attackMonster(MODE[1]);
+        } else if (currentStrongAttackAmount == 1) {
+            --currentStrongAttackAmount;
+            setStrongAttackAmount(currentStrongAttackAmount);
+            disableStrongAttackButton();
+            hasStrongAttacks = false;
+        }
+    }
 }
 function healPlayerHandler() {
     let healValue;
-    if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
-        presentInfoModal('Healing not possible!', `Slow down, champ! You're already maxed out on health. Save some healing for later, you greedy sod!`);
-        healValue = chosenMaxLife - currentPlayerHealth;
-    } else {
-        healValue = HEAL_VALUE;
+    if (hasHealingPotions) {
+        if (currentHealingPotionAmount > 1) {
+            --currentHealingPotionAmount;
+            setHealingPotionAmount(currentHealingPotionAmount);
+        } else if (currentHealingPotionAmount == 1) {
+            --currentHealingPotionAmount;
+            setHealingPotionAmount(currentHealingPotionAmount);
+            disableHealingButton();
+            hasHealingPotions = false;
+        }
+        if (currentPlayerHealth >= chosenMaxLife - HEAL_VALUE) {
+            presentInfoModal('Healing not possible!', `Slow down, champ! You're already maxed out on health. Save some healing for later, you greedy sod!`);
+            healValue = chosenMaxLife - currentPlayerHealth;
+        } else {
+            healValue = HEAL_VALUE;
+        }
+        increasePlayerHealth(healValue);
+        currentPlayerHealth += healValue;
+        createLogEntry(LOG_EVENT_PLAYER_HEAL, healValue, currentMonsterHealth, currentPlayerHealth);
+        endRound();
     }
-    increasePlayerHealth(healValue);
-    currentPlayerHealth += healValue;
-    createLogEntry(LOG_EVENT_PLAYER_HEAL, healValue, currentMonsterHealth, currentPlayerHealth);
-    endRound();
 }
 function logHandler() {
     console.log(battleLog);

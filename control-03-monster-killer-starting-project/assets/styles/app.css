@@ -48,6 +48,17 @@ button {
   margin: 0.5rem;
 }
 
+button.disabled, button.disabled:hover {
+  font: inherit;
+  background: #6d6d6d;
+  border: 1px solid #6d6d6d;
+  color: white;
+  padding: 1rem 2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  margin: 0.5rem;
+}
+
 button:focus {
   outline: none;
 }

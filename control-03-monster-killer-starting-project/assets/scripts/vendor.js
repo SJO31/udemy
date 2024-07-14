@@ -57,6 +57,14 @@ function setHealingPotionAmount(amount) {
 function toggleBackdrop() {
   backdropElement.classList.toggle('visible');
 }
+function disableStrongAttackButton() {
+  strongAttackAmount.disabled = true;
+  strongAttackBtn.classList.add('disabled');
+}
+function disableHealingButton() {
+  healPotionAmount.disabled = true;
+  healBtn.classList.add('disabled');
+}
 function presentInfoModal(title, message) {
   toggleBackdrop();
   infoModal = document.createElement('div');
