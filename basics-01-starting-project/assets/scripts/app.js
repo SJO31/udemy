@@ -23,6 +23,9 @@ function executeCalculation(calcType) {
     const inputNum = getUserNumberInput();
     const initialResult = currentResult;
     let mathOperator;
+    if (calcType !== 'ADD' && calcType !== 'SUBTRACT' && calcType !== 'MULTIPLY' && calcType !== 'DIVIDE' || !inputNum) {
+        return;
+    }
     if(calcType === 'ADD') {
         currentResult += inputNum;
         mathOperator = '+';
