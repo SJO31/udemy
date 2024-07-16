@@ -41,42 +41,60 @@ function createLogEntry(ev, val, monsterHealth, playerHealth) {
         value: val,
         finalMonsterHealth: monsterHealth,
         finalPlayerHealth: playerHealth
-};
-    if (ev === LOG_EVENT_PLAYER_ATTACK) {
-        logEntry.target = 'MONSTER';
-    } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
-        logEntry = {
-            event: ev,
-            value: val,
-            target: 'MONSTER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
-        logEntry = {
-            event: ev,
-            value: val,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (ev === LOG_EVENT_PLAYER_HEAL) {
-        logEntry = {
-            event: ev,
-            value: val,
-            target: 'PLAYER',
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
-    } else if (ev === LOG_EVENT_GAME_OVER) {
-        logEntry = {
-            event: ev,
-            value: val,
-            finalMonsterHealth: monsterHealth,
-            finalPlayerHealth: playerHealth
-        };
+    };
+    switch (ev) {
+        case LOG_EVENT_PLAYER_ATTACK:
+            logEntry.target = 'MONSTER';
+            break;
+        case LOG_EVENT_PLAYER_STRONG_ATTACK:
+            logEntry.target = 'MONSTER';
+            break;
+        case LOG_EVENT_MONSTER_ATTACK:
+            target: 'PLAYER';
+            break;
+        case LOG_EVENT_PLAYER_HEAL:
+            target: 'PLAYER';
+            break;
+        case LOG_EVENT_GAME_OVER:
+            break;
+        default:
+            logEntry = {};
+        }
+    // if (ev === LOG_EVENT_PLAYER_ATTACK) {
+    //     logEntry.target = 'MONSTER';
+    // } else if (ev === LOG_EVENT_PLAYER_STRONG_ATTACK) {
+    //     logEntry = {
+    //         event: ev,
+    //         value: val,
+    //         target: 'MONSTER',
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
+    // } else if (ev === LOG_EVENT_MONSTER_ATTACK) {
+    //     logEntry = {
+    //         event: ev,
+    //         value: val,
+    //         target: 'PLAYER',
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
+    // } else if (ev === LOG_EVENT_PLAYER_HEAL) {
+    //     logEntry = {
+    //         event: ev,
+    //         value: val,
+    //         target: 'PLAYER',
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
+    // } else if (ev === LOG_EVENT_GAME_OVER) {
+    //     logEntry = {
+    //         event: ev,
+    //         value: val,
+    //         finalMonsterHealth: monsterHealth,
+    //         finalPlayerHealth: playerHealth
+    //     };
         
-    }
+    // }
     battleLog.push(logEntry);
 }
 function reset() {
@@ -141,6 +159,7 @@ function strongAttackHandler() {
         } else if (currentStrongAttackAmount == 1) {
             --currentStrongAttackAmount;
             setStrongAttackAmount(currentStrongAttackAmount);
+            attackMonster(MODE[1]);
             disableStrongAttackButton();
             hasStrongAttacks = false;
         }
