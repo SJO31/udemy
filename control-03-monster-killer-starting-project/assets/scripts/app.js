@@ -205,6 +205,7 @@ function logHandler() {
             console.log(`${key}: ${logEntry[key]}`)
             // console.log(key);
             // console.log(logEntry[key]);
+            break;
         }
     });
     console.log(battleLog);
