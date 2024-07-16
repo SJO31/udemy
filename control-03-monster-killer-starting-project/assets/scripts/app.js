@@ -190,6 +190,23 @@ function healPlayerHandler() {
     }
 }
 function logHandler() {
+    for (let i = 0; i < 3; i++) {
+        console.log('----------');
+    }
+    // for (let i = 0; i < battleLog.length; i++) {
+    //     console.log(battleLog[i]);
+    // }
+    // for (const logEntry of battleLog) {
+    //     console.log(logEntry);
+    // }
+    battleLog.forEach(logEntry => {
+        console.log(logEntry);
+        for (const key in logEntry) {
+            console.log(`${key}: ${logEntry[key]}`)
+            // console.log(key);
+            // console.log(logEntry[key]);
+        }
+    });
     console.log(battleLog);
 }
 
