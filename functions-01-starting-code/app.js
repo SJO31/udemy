@@ -1,26 +1,29 @@
-const startGameBtn = document.getElementById('start-game-btn');
+const startGameBtn = document.getElementById("start-game-btn");
 
-const ROCK = 'ROCK';
-const PAPER = 'PAPER';
-const SCISSORS = 'SCISSORS';
+const ROCK = "ROCK";
+const PAPER = "PAPER";
+const SCISSORS = "SCISSORS";
 const DEFAULT_USER_CHOICE = ROCK;
-const RESULT_DRAW = 'DRAW';
-const RESULT_PLAYER_WINS = 'PLAYER_WINS';
-const RESULT_COMPUTER_WINS = 'COMPUTER_WINS';
+const RESULT_DRAW = "DRAW";
+const RESULT_PLAYER_WINS = "PLAYER_WINS";
+const RESULT_COMPUTER_WINS = "COMPUTER_WINS";
 
 let gameIsRunning = false;
 let gameLog = [];
 
-const getPlayerChoice = function () {
-    const selection = prompt(`${ROCK}, ${PAPER} or ${SCISSORS}?`, '').toUpperCase();
+const getPlayerChoice = () => {
+    const selection = prompt(
+        `${ROCK}, ${PAPER} or ${SCISSORS}?`,
+        ""
+    ).toUpperCase();
     if (selection !== ROCK && selection !== PAPER && selection !== SCISSORS) {
-        alert('Invalid choice! We chose Rock for you!');
+        alert("Invalid choice! We chose Rock for you!");
         return DEFAULT_USER_CHOICE;
     }
     return selection;
-}
+};
 
-const getComputerChoice = function () {
+const getComputerChoice = () => {
     const randomValue = Math.random();
     if (randomValue < 0.34) {
         return ROCK;
@@ -29,11 +32,9 @@ const getComputerChoice = function () {
     } else {
         return SCISSORS;
     }
-}
+};
 
-// alert(`It's a draw!`);
-
-const getWinner = function (pChoice, cChoice) {
+const getWinner = (pChoice = DEFAULT_USER_CHOICE, cChoice) => {
     gameIsRunning = false;
     if (pChoice === cChoice) {
         return RESULT_DRAW;
@@ -42,23 +43,23 @@ const getWinner = function (pChoice, cChoice) {
     } else {
         return RESULT_COMPUTER_WINS;
     }
-}
+};
 
-const addEntryLog = function(pChoice, cChoice, winner) {
+const addEntryLog = (pChoice, cChoice, winner) => {
     gameLog.push({
         Player_Choice: pChoice,
         Computer_Choice: cChoice,
-        Round_Winner: winner
-    })
+        Round_Winner: winner,
+    });
     return gameLog;
-}
+};
 
-startGameBtn.addEventListener('click', () => {
+startGameBtn.addEventListener("click", () => {
     if (gameIsRunning) return;
     gameIsRunning = true;
     const playerSelection = getPlayerChoice();
     const computerSelection = getComputerChoice();
     const winner = getWinner(playerSelection, computerSelection);
-    const gameLog = addEntryLog(playerSelection, computerSelection, winner)
-    console.log(gameLog)
+    const gameLog = addEntryLog(playerSelection, computerSelection, winner);
+    console.log(gameLog);
 });
