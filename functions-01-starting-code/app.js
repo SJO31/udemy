@@ -63,3 +63,14 @@ startGameBtn.addEventListener("click", () => {
     const gameLog = addEntryLog(playerSelection, computerSelection, winner);
     console.log(gameLog);
 });
+
+// not relevant for the game
+
+const sumUp = (...numbers) => {
+    let sum = 0;
+    numbers.forEach((num) => sum += num);
+    console.log(sum);
+}
+
+sumUp(1,42,-21,411,-200);
+sumUp(5,21,-4,21,44,-53,3,1,4)
