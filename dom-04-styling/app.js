@@ -1,5 +1,6 @@
 const ul = document.body.firstElementChild.nextElementSibling;
 const firstLi = ul.firstElementChild;
+const ulNode = document.querySelector('ul');
 
 console.log(firstLi);
 
@@ -19,3 +20,13 @@ button.addEventListener('click', () => {
   // section.classList.toggle('visible');
   section.classList.toggle('invisible');
 });
+
+const li1 = document.createElement('li');
+const li2 = document.createElement('li');
+
+li1.textContent = 'Item 4';
+li2.textContent = 'Item 5';
+
+ulNode.append(li1);
+ulNode.lastElementChild.before(li2);
+
