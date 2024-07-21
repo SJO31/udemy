@@ -33,6 +33,7 @@ const deleteMovie = movieId => {
     }
     movies.splice(movieIndex, 1);
     movieList.children[movieIndex].remove();
+    updateUI();
 }
 
 const deleteMovieHandler = movieId => {
