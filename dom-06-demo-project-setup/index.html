@@ -17,16 +17,14 @@
         <label for="image-url">Image URL</label>
         <input type="text" name="image-url" id="image-url" />
         <label for="rating">Your Rating</label>
-        <input
-          type="number"
-          step="1"
-          max="5"
-          min="1"
-          name="rating"
-          id="rating"
-        />
+        <input type="number" step="1" max="10" min="1" name="rating" id="rating" />
+        <label for="title">Description</label>
+        <input type="text" name="description" id="description" />
       </div>
       <div class="modal__actions">
+        <button id="btn-add-dummy-1">DUMMY DATA 1</button>
+        <button id="btn-add-dummy-2">DUMMY DATA 2</button>
+        <button id="btn-add-dummy-3">DUMMY DATA 3</button>
         <button class="btn btn--passive">Cancel</button>
         <button class="btn btn--success">Add</button>
       </div>
@@ -46,7 +44,6 @@
     <header>
       <h1>Favorite Movies</h1>
       <button id="btn-add-movie">ADD MOVIE</button>
-      <button id="btn-add-dummy">DUMMY DATA</button>
     </header>
 
     <main>
