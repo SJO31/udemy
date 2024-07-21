@@ -8,6 +8,7 @@ html {
 
 body {
   margin: 0;
+  background-color: #65676d;
 }
 
 button:focus {
@@ -21,7 +22,7 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 2.5rem;
-  background: #00329e;
+  background: #122b5f;
 }
 
 header h1 {
@@ -33,8 +34,8 @@ header h1 {
 header button {
   font: inherit;
   padding: 0.5rem 1rem;
-  background: #f67722;
-  border: 1px solid #f67722;
+  background: #df8951;
+  border: 1px solid #df8951;
   color: white;
   border-radius: 6px;
   box-shadow: 0 1px 8px rgba(0, 0, 0, 0.26);
@@ -80,8 +81,8 @@ input:focus {
 
 .btn:hover,
 .btn:active {
-  background: #f67722;
-  border-color: #f67722;
+  background: #df8951;
+  border-color: #df8951;
 }
 
 .btn--passive {
@@ -128,8 +129,8 @@ input:focus {
 .modal .modal__title {
   margin: 0;
   padding: 1rem;
-  border-bottom: 1px solid #00329e;
-  background: #00329e;
+  border-bottom: 1px solid #122b5f;
+  background: #122b5f;
   color: white;
   border-radius: 10px 10px 0 0;
 }
@@ -149,6 +150,7 @@ input:focus {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
   border-radius: 10px;
   display: flex;
+  background-color: white;
 }
 
 .movie-element h2,
@@ -165,7 +167,7 @@ input:focus {
 .movie-element p {
   color: white;
   display: inline;
-  background: #f67722;
+  background: #df8951;
   padding: 0.25rem 1rem;
   border-radius: 15px;
 }
@@ -188,7 +190,7 @@ input:focus {
 }
 
 .card {
-  background: white;
+  background: rgb(47, 47, 53);
   border-radius: 10px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
 }
@@ -203,6 +205,7 @@ input:focus {
 #entry-text p {
   font-size: 1.5rem;
   text-align: center;
+  color: white;
 }
 
 #movie-list {
