@@ -30,3 +30,5 @@ li2.textContent = 'Item 5';
 ulNode.append(li1);
 ulNode.lastElementChild.before(li2);
 
+const li3 = li1.cloneNode(true);
+ulNode.append(li3);
