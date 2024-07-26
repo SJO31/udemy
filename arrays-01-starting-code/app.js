@@ -49,6 +49,8 @@
 // });
 // console.log(stuart);
 
+
+// forEach Function
 const prices = [3.99, 15.99, 40, 52.49];
 const tax = 0.19;
 const taxAdjustedPrices = [];
@@ -59,3 +61,11 @@ prices.forEach((price, idx, prices) => {
 });
 
 console.log(taxAdjustedPrices);
+
+// Map Function
+const newPrices = prices.map((price, idx, prices) => {
+    const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
+    return priceObj;
+});
+
+console.log(prices, newPrices);
