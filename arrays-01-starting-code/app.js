@@ -42,9 +42,20 @@
 // console.log(examResults25.indexOf(2));
 
 // const personas = ['max', 'stefan', 'laura', 'john', 'stuart'];
-const personas = [{name: 'max'}, {name: 'stefan'}, {name: 'laura'}, {name: 'john'}, {name: 'stuart'}];
+// const personas = [{name: 'max'}, {name: 'stefan'}, {name: 'laura'}, {name: 'john'}, {name: 'stuart'}];
 
-const stuart = personas.find((person, idx, persons) => {
-    return person.name == 'stuart';
+// const stuart = personas.find((person, idx, persons) => {
+//     return person.name == 'stuart';
+// });
+// console.log(stuart);
+
+const prices = [3.99, 15.99, 40, 52.49];
+const tax = 0.19;
+const taxAdjustedPrices = [];
+
+prices.forEach((price, idx, prices) => {
+    const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
+    taxAdjustedPrices.push(priceObj);
 });
-console.log(stuart);
+
+console.log(taxAdjustedPrices);
