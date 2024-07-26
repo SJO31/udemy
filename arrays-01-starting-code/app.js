@@ -51,7 +51,7 @@
 
 
 // forEach Function
-const prices = [3.99, 15.99, 40, 52.49];
+const prices = [3.99, 15.99, 40, 52.49, 5.99, 11.39, 38];
 const tax = 0.19;
 const taxAdjustedPrices = [];
 
@@ -69,3 +69,20 @@ const newPrices = prices.map((price, idx, prices) => {
 });
 
 console.log(prices, newPrices);
+
+const sortedPrices = prices.sort((a, b) => {
+    if (a > b) {
+        return 1;
+    } else if (a === b) {
+        return 0;
+    } else {
+        return -1; 
+    }
+});
+console.log(prices);
+console.log(prices.reverse());
+
+const filteredArray = prices.filter((price, idx, prices) => {
+    return price > 15;
+});
+console.log(filteredArray);
