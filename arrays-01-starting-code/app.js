@@ -85,4 +85,13 @@ console.log(prices.reverse());
 const filteredArray = prices.filter((price, idx, prices) => {
     return price > 15;
 });
+const filteredArray2 = prices.filter(el => el > 15); // same function as before just shortened
 console.log(filteredArray);
+console.log(filteredArray2);
+
+const sum = prices.reduce((prevValue, curValue, curIndex, prices) => {
+    return prevValue += curValue;
+}, 0);
+const sum2 = prices.reduce((prevValue, curValue) => prevValue += curValue, 0);
+console.log(sum);
+console.log(sum2);
