@@ -51,47 +51,51 @@
 
 
 // forEach Function
-const prices = [3.99, 15.99, 40, 52.49, 5.99, 11.39, 38];
-const tax = 0.19;
-const taxAdjustedPrices = [];
+// const prices = [3.99, 15.99, 40, 52.49, 5.99, 11.39, 38];
+// const tax = 0.19;
+// const taxAdjustedPrices = [];
 
-prices.forEach((price, idx, prices) => {
-    const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
-    taxAdjustedPrices.push(priceObj);
-});
+// prices.forEach((price, idx, prices) => {
+//     const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
+//     taxAdjustedPrices.push(priceObj);
+// });
 
-console.log(taxAdjustedPrices);
+// console.log(taxAdjustedPrices);
 
-// Map Function
-const newPrices = prices.map((price, idx, prices) => {
-    const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
-    return priceObj;
-});
+// // Map Function
+// const newPrices = prices.map((price, idx, prices) => {
+//     const priceObj = { index: idx, taxAdjPrices: price * (1 + tax) }
+//     return priceObj;
+// });
 
-console.log(prices, newPrices);
+// console.log(prices, newPrices);
 
-const sortedPrices = prices.sort((a, b) => {
-    if (a > b) {
-        return 1;
-    } else if (a === b) {
-        return 0;
-    } else {
-        return -1; 
-    }
-});
-console.log(prices);
-console.log(prices.reverse());
+// const sortedPrices = prices.sort((a, b) => {
+//     if (a > b) {
+//         return 1;
+//     } else if (a === b) {
+//         return 0;
+//     } else {
+//         return -1; 
+//     }
+// });
+// console.log(prices);
+// console.log(prices.reverse());
 
-const filteredArray = prices.filter((price, idx, prices) => {
-    return price > 15;
-});
-const filteredArray2 = prices.filter(el => el > 15); // same function as before just shortened
-console.log(filteredArray);
-console.log(filteredArray2);
+// const filteredArray = prices.filter((price, idx, prices) => {
+//     return price > 15;
+// });
+// const filteredArray2 = prices.filter(el => el > 15); // same function as before just shortened
+// console.log(filteredArray);
+// console.log(filteredArray2);
 
-const sum = prices.reduce((prevValue, curValue, curIndex, prices) => {
-    return prevValue += curValue;
-}, 0);
-const sum2 = prices.reduce((prevValue, curValue) => prevValue += curValue, 0);
-console.log(sum);
-console.log(sum2);
+// const sum = prices.reduce((prevValue, curValue, curIndex, prices) => {
+//     return prevValue += curValue;
+// }, 0);
+// const sum2 = prices.reduce((prevValue, curValue) => prevValue += curValue, 0);
+// console.log(sum);
+// console.log(sum2);
+
+const data = 'london;1200;2024';
+const transformData = data.split(';');
+console.log(transformData);
