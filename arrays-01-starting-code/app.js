@@ -14,16 +14,37 @@
 // console.log(numbers4);
 
 // Let's try some array functions
-const hobbies = ['gaming', 'cooking'];
-hobbies.push('reading');
-hobbies.pop(); // removes the last value
-hobbies.unshift('coding');
-hobbies.shift(); // removes the first value
 
-// hobbies[1] = 'swimming'; // rarely used
-console.log(hobbies);
+// const hobbies = ['gaming', 'cooking'];
+// hobbies.push('reading');
+// hobbies.pop(); // removes the last value
+// hobbies.unshift('coding');
+// hobbies.shift(); // removes the first value
 
-let gameName = 'Super Mario';
+// // hobbies[1] = 'swimming'; // rarely used
+// hobbies.splice(1, 0, 'soccer');
+// hobbies.splice(-2, 1);
 
-hobbies.splice(1, 0, 'soccer');
+// console.log(hobbies);
+
+// let gameName = 'Super Mario';
+
 // gameName.splice(6, 7, 'Luigi and '); // does not work!
+
+// const examResults23 = [1, 3, 3, 2, 5, 2];
+// const examResults24 = examResults23.slice(1, 4);
+// const examResults25 = examResults23.concat(5, 5, 2);
+
+// console.log(examResults23);
+// console.log(examResults24);
+// console.log(examResults25);
+
+// console.log(examResults25.indexOf(2));
+
+// const personas = ['max', 'stefan', 'laura', 'john', 'stuart'];
+const personas = [{name: 'max'}, {name: 'stefan'}, {name: 'laura'}, {name: 'john'}, {name: 'stuart'}];
+
+const stuart = personas.find((person, idx, persons) => {
+    return person.name == 'stuart';
+});
+console.log(stuart);
