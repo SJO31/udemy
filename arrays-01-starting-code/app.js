@@ -96,6 +96,13 @@
 // console.log(sum);
 // console.log(sum2);
 
-const data = 'london;1200;2024';
-const transformData = data.split(';');
-console.log(transformData);
+// const data = 'london;1200;2024';
+// const transformData = data.split(';');
+// console.log(transformData);
+
+const names = ['Laura', 'Stefan', 'Tom'];
+const copiedNames = [...names];
+console.log(copiedNames);
+// console.log(Math.min(...prices));
+
+
