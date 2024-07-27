@@ -12,23 +12,30 @@
 
 // console.log(ids);
 
-const person1 = {name: 'Max'};
-const person2 = {name: 'Laura'};
+// const person1 = {name: 'Max'};
+// const person2 = {name: 'Laura'};
 
-const personData = new Map([[person1, [{date: '2024-08-23', price: 10}]]]);
+// const personData = new Map([[person1, [{date: '2024-08-23', price: 10}]]]);
 
-personData.set(person2, [{date: '2024-01-22', price: 44}]);
+// personData.set(person2, [{date: '2024-01-22', price: 44}]);
 
-console.log(personData);
-console.log(personData.get(person1));
+// console.log(personData);
+// console.log(personData.get(person1));
 
-for ( const entry of personData.entries()) {
-    console.log(entry);
+// for ( const entry of personData.entries()) {
+//     console.log(entry);
     
-}
+// }
 
-for (const key of personData.keys()) {
-    console.log(key);
+// for (const key of personData.keys()) {
+//     console.log(key);
     
-}
-console.log(personData.size);
+// }
+// console.log(personData.size);
+
+let person = {name: 'Stefan'};
+const persons = new WeakSet();
+persons.add(person);
+
+persons.add(person);
+console.log(persons);
