@@ -102,7 +102,7 @@
 
 const names = ['Laura', 'Stefan', 'Tom', 'John'];
 const copiedNames = [...names];
-console.log(copiedNames);
+// console.log(copiedNames);
 // console.log(Math.min(...prices));
 
 // const firstName = names[0];
@@ -110,5 +110,5 @@ console.log(copiedNames);
 
 // destructing arrays
 const [ firstName, lastName, ...otherNames ] = names;
-console.log(firstName, lastName, otherNames);
+// console.log(firstName, lastName, otherNames);
 
