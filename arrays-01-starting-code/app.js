@@ -100,9 +100,15 @@
 // const transformData = data.split(';');
 // console.log(transformData);
 
-const names = ['Laura', 'Stefan', 'Tom'];
+const names = ['Laura', 'Stefan', 'Tom', 'John'];
 const copiedNames = [...names];
 console.log(copiedNames);
 // console.log(Math.min(...prices));
 
+// const firstName = names[0];
+// const secondName = names[1];
+
+// destructing arrays
+const [ firstName, lastName, ...otherNames ] = names;
+console.log(firstName, lastName, otherNames);
 
