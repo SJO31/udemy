@@ -39,3 +39,7 @@ persons.add(person);
 
 persons.add(person);
 console.log(persons);
+
+const personData = new WeakMap();
+personData.set(person);
+console.log(personData.get(person));
