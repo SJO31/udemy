@@ -18,8 +18,10 @@ function renderMovies(filter = '') {
     filteredMovies.forEach((movie) => {
         const movieEl = document.createElement('li');
         const { info, ...otherProps } = movie; // Destructuring Method
-        const { title: movieTitle } = info; // Destructuring and new Name of variable
-        let text = movieTitle + ' - ';
+        // const { title: movieTitle } = info; // Destructuring and new Name of variable
+        let { getUpperCaseTitle } = movie;
+        // getUpperCaseTitle = getUpperCaseTitle.bind(movie);
+        let text = getUpperCaseTitle.call(movie) + ' - ';
         for (const key in info) {
             if (key !== 'title') {
                 text += `${key}: ${info[key]}`;
@@ -44,7 +46,10 @@ function addMovieHandler() {
             title,
             [extraName]: extraValue,
         },
-        id: Math.random()
+        id: Math.random().toString(),
+        getUpperCaseTitle() {
+            return this.info.title.toUpperCase();
+        }
     }
 
     movies.push(newMovie);
