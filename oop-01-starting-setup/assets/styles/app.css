@@ -56,6 +56,7 @@ button:active {
   padding: 2rem;
   display: flex;
   justify-content: space-between;
+  background-color: white;
 }
 
 .cart h2 {
