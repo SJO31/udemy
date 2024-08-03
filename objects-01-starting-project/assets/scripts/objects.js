@@ -23,7 +23,7 @@ function renderMovies(filter = '') {
         // getUpperCaseTitle = getUpperCaseTitle.bind(movie);
         let text = getUpperCaseTitle.call(movie) + ' - ';
         for (const key in info) {
-            if (key !== 'title') {
+            if (key !== 'title' && key !== '_title') {
                 text += `${key}: ${info[key]}`;
             }
         }
@@ -37,13 +37,22 @@ function addMovieHandler() {
     const extraName = document.getElementById('extra-name').value;
     const extraValue = document.getElementById('extra-value').value;
 
-    if (title.trim() === '' || extraName.trim() === '' || extraValue.trim() === '') {
+    if (extraName.trim() === '' || extraValue.trim() === '') {
         return;
     }
 
     const newMovie = {
         info: {
-            title,
+            set title(val) {
+                if (val.trim() === '') {
+                    this._title = 'DEFAULT';
+                    return;
+                }
+                this._title = val;
+            },
+            get title() {
+                return this._title;
+            },
             [extraName]: extraValue,
         },
         id: Math.random().toString(),
@@ -51,6 +60,9 @@ function addMovieHandler() {
             return this.info.title.toUpperCase();
         }
     }
+
+    newMovie.info.title = title;
+    console.log(newMovie.info.title)
 
     movies.push(newMovie);
     renderMovies();
