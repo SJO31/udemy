@@ -11,8 +11,14 @@ class Person extends AgedPerson {
     constructor() {
         super();
         this.age = 29;
+        this.greet3 = function () { console.log('hello') }
     }
 
+    greet2 = function () {
+        console.log('Hi');
+    }
+
+    // the least memory heavy method. it uses the same prototype for every object and not added to every object itself
     greet() {
         console.log(
             `Hi, I am ${this.name} and I am ${this.age} years old.`
@@ -36,7 +42,22 @@ class Person extends AgedPerson {
 //     }
 // }
 
-const p = new Person();
-p.greet();
-console.log(p)
-console.log(p.__proto__)
+// const p = new Person();
+// p.greet();
+// console.log(p)
+// console.log(p.__proto__)
+
+const course = {
+    title: 'Wood work',
+    rating: 4
+}
+
+Object.setPrototypeOf(course, {
+    ...Object.getPrototypeOf(course),
+    printRating: function() {
+        console.log(`${this.rating}/5`);
+    }
+})
+
+course.printRating();
+console.log(course);
