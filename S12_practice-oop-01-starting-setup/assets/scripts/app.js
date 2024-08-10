@@ -8,6 +8,7 @@ class DOMHelper {
         const element = document.getElementById(elementId);
         const destinationElement = document.querySelector(newDestinationSelector)
         destinationElement.append(element);
+        element.scrollIntoView({behavior: 'smooth'});
     }
 }
 class Component {
@@ -30,8 +31,8 @@ class Component {
     }
 }
 class Tooltip extends Component {
-    constructor(closeNotifierFunction, text) {
-        super();
+    constructor(closeNotifierFunction, text, hostElementId) {
+        super(hostElementId);
         this.closeNotifier = closeNotifierFunction;
         this.text = text;
         this.create();
@@ -43,7 +44,20 @@ class Tooltip extends Component {
     create() {
         const toolTipElement = document.createElement('div');
         toolTipElement.className = 'card';
-        toolTipElement.textContent = this.text;
+        toolTipElement.textContent = this.text
+
+        const hostElPosLeft = this.hostElementId.offsetLeft;
+        const hostElPosTop = this.hostElementId.offsetTop;
+        const hostElHeight = this.hostElementId.clientHeight;
+        const parentElementScrolling = this.hostElementId.parentElement.scrollTop;
+
+        const x = hostElPosLeft + 20;
+        const y = hostElPosTop + hostElHeight - parentElementScrolling - 10;
+
+        toolTipElement.style.position = 'absolute';
+        toolTipElement.style.left = x + 'px';
+        toolTipElement.style.top = y + 'px';
+
         toolTipElement.addEventListener('click', this.closeTooltip);
         this.element = toolTipElement;
     }
@@ -62,7 +76,7 @@ class ProjectItem {
         }
         const projectElement = document.getElementById(this.id);
         const toolTipText = projectElement.dataset.extraInfo;
-        const tooltip = new Tooltip(() => this.hasActiveTooltip = false, toolTipText);
+        const tooltip = new Tooltip(() => this.hasActiveTooltip = false, toolTipText, this.id);
         tooltip.attach();
         this.hasActiveTooltip = true;
     }
