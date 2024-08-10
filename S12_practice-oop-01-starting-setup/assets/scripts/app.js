@@ -12,9 +12,34 @@ static clearEventListeners(element) {
     }
 }
 
-class Tooltip {
+class Component {
+    constructor(hostElementId, insertBefore = false) {
+        if (hostElementId) {
+            this.hostElementId = document.getElementById(hostElementId);
+        } else {
+            this.hostElementId = document.body;
+        }
+        this.insertBefore = insertBefore;
+    }
+
+    detach() {
+        if (this.element) {
+            this.element.remove();
+        }
+        // this.element.parentElement.removeChild(this.element); // for older browsers
+    }
+
+
+    attach() {
+        this.hostElementId.insertAdjacentElement(this.insertBefore ? 'beforebegin' : 'beforeend', this.element)
+    }
+}
+
+class Tooltip extends Component {
     constructor(closeNotifierFunction) {
+        super();
         this.closeNotifier = closeNotifierFunction;
+        this.create();
     }
 
     closeTooltip = () => {
@@ -22,19 +47,12 @@ class Tooltip {
         this.closeNotifier();
     }
 
-    detach() {
-        this.element.remove();
-        // this.element.parentElement.removeChild(this.element); // for older browsers
-    }
-
-
-    show() {
+    create() {
         const toolTipElement = document.createElement('div');
         toolTipElement.className = 'card';
         toolTipElement.textContent = 'Dummy';
         toolTipElement.addEventListener('click', this.closeTooltip);
         this.element = toolTipElement;
-        document.body.append(toolTipElement);
     }
 }
 
@@ -53,9 +71,7 @@ class ProjectItem {
             return;
         }
         const tooltip = new Tooltip(() => this.hasActiveTooltip = false);
-        console.log(tooltip);
-        
-        tooltip.show();
+        tooltip.attach();
         this.hasActiveTooltip = true;
     }
 
