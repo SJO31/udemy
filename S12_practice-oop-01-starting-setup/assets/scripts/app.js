@@ -42,9 +42,13 @@ class Tooltip extends Component {
         this.closeNotifier();
     }
     create() {
-        const toolTipElement = document.createElement('div');
-        toolTipElement.className = 'card';
-        toolTipElement.textContent = this.text
+        const tooltipElement = document.createElement('div');
+        tooltipElement.className = 'card';
+        // tooltipElement.textContent = this.text
+        const tooltipTemplate = document.getElementById('tooltip');
+        const tooltipBody = document.importNode(tooltipTemplate.content, true);
+        tooltipBody.querySelector('p').textContent = this.text;
+        tooltipElement.append(tooltipBody);
 
         const hostElPosLeft = this.hostElementId.offsetLeft;
         const hostElPosTop = this.hostElementId.offsetTop;
@@ -54,12 +58,12 @@ class Tooltip extends Component {
         const x = hostElPosLeft + 20;
         const y = hostElPosTop + hostElHeight - parentElementScrolling - 10;
 
-        toolTipElement.style.position = 'absolute';
-        toolTipElement.style.left = x + 'px';
-        toolTipElement.style.top = y + 'px';
+        tooltipElement.style.position = 'absolute';
+        tooltipElement.style.left = x + 'px';
+        tooltipElement.style.top = y + 'px';
 
-        toolTipElement.addEventListener('click', this.closeTooltip);
-        this.element = toolTipElement;
+        tooltipElement.addEventListener('click', this.closeTooltip);
+        this.element = tooltipElement;
     }
 }
 class ProjectItem {
@@ -75,8 +79,8 @@ class ProjectItem {
             return;
         }
         const projectElement = document.getElementById(this.id);
-        const toolTipText = projectElement.dataset.extraInfo;
-        const tooltip = new Tooltip(() => this.hasActiveTooltip = false, toolTipText, this.id);
+        const tooltipText = projectElement.dataset.extraInfo;
+        const tooltip = new Tooltip(() => this.hasActiveTooltip = false, tooltipText, this.id);
         tooltip.attach();
         this.hasActiveTooltip = true;
     }
