@@ -136,6 +136,8 @@ class App {
         // someScript.textContent = 'alert("Hi there");';
         // document.head.append(someScript);
         document.getElementById('start-analytics-btn').addEventListener('click', this.startAnalytics);
+
+        setTimeout(this.startAnalytics, 3000, []);
     }
     static startAnalytics() {
         const analyticsScript = document.createElement('script');
