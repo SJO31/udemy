@@ -16,6 +16,20 @@ buttons.forEach(btn => {
     // btn.addEventListener('mouseenter', buttonClickHandler);
 });
 
+const listItems = document.querySelectorAll('li');
+const list = document.querySelector('ul');
+
+listItems.forEach(listItem => {
+    listItem.addEventListener('click', event => {
+        event.target.classList.toggle('highlight');
+    })
+})
+
+// list.addEventListener('click', event => {
+//     // event.target.classList.toggle('highlight')
+//     event.target.closest('li').classList.toggle('highlight');
+// })
+
 const form = document.querySelector('form');
 
 form.addEventListener('submit', event => {

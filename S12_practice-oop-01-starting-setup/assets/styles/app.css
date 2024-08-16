@@ -125,3 +125,7 @@ button:active {
   color: white;
   margin: 0;
 }
+
+.highlight {
+  background-color: aquamarine;
+}
